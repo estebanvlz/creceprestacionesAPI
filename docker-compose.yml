@@ -1,0 +1,10 @@
+
+services:
+  crece: 
+    build: .
+    volumes:
+      - .:/app/src/
+      - ./.mvn:/app/src/.mvn
+    ports:
+      - "8080:8080" 
+    command: mvn spring-boot:run
