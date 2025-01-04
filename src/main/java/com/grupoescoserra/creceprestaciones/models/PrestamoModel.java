@@ -1,7 +1,9 @@
 package com.grupoescoserra.creceprestaciones.models;
 
+import lombok.Data;
+
+@Data
 public class PrestamoModel {
-    
     private int cuenta;
     private double capitalConcedido;
     private String periocidad;
@@ -10,5 +12,6 @@ public class PrestamoModel {
     private String fechaApertura;
     private String fechaVencimiento;
     private boolean terminado;
-    
+    private SaldoModel saldo;
+    private MovimientosModel movimientos;
 }
