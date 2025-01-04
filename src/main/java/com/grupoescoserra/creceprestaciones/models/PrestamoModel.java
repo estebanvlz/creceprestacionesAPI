@@ -8,10 +8,10 @@ public class PrestamoModel {
     private double capitalConcedido;
     private String periocidad;
     private int plazoPactado;
-    private int tasaInteres;
+    private double tasaInteres;
     private String fechaApertura;
     private String fechaVencimiento;
     private boolean terminado;
     private SaldoModel saldo;
-    private MovimientosModel movimientos;
+    private MovimientosModel[] movimientos;
 }
