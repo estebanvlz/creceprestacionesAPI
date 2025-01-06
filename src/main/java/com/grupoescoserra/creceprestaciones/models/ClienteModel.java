@@ -6,4 +6,5 @@ import lombok.Data;
 public class ClienteModel {
     private String nombreCliente;
     private int numeroCliente;
+    private String empresa;
 }
