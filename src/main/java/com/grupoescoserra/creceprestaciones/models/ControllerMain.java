@@ -27,9 +27,13 @@ public class ControllerMain {
         this.service2 = service2;
     }
 
+    @GetMapping("/prestamos")
+    public List<PrestamosModel> function(){
+        return service2.fetchAllPrestamosInfo();
+    }
     // @GetMapping("/prestamos")
     // public PrestamosModel function(@RequestParam("id") String id) throws IOException{
-    //     return service.pdf2text(id);
+    //     return service.pdf2text(id, "Grupo Escoserra");
     // }
 
     @GetMapping("/test")
@@ -43,19 +47,19 @@ public class ControllerMain {
     }
 
 
-    @GetMapping("/prueba")
-    public ResponseEntity<List<HashMap<String, String>>> prueba(){
-        try {
-            return new ResponseEntity<>(service2.fetchAllIdsAndCompanyName(), HttpStatus.OK);
-        } catch (Exception exception) {
-            System.out.println("Error");
-        }
-        return null;
+    // @GetMapping("/prueba")
+    // public ResponseEntity<List<HashMap<String, String>>> prueba(){
+    //     try {
+    //         return new ResponseEntity<>(service2.fetchAllIdsAndCompanyName(), HttpStatus.OK);
+    //     } catch (Exception exception) {
+    //         System.out.println("Error");
+    //     }
+    //     return null;
 
-    }
+    // }
 
-    @GetMapping("/prueba2")
-    public File prueba2(@RequestParam("id") String id){
-        return service2.fetchPDF(id);
-    }
+    // @GetMapping("/prueba2")
+    // public File prueba2(@RequestParam("id") String id){
+    //     return service2.fetchPDF(id);
+    // }
 }

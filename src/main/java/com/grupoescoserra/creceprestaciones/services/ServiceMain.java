@@ -163,9 +163,7 @@ public class ServiceMain {
         // se mapea la info del cliente
         prestamos.setCliente(cliente);
 
-        text = text.replaceAll(
-                "\\*CAT \\(COSTO ANUAL TOTAL\\) 115\\.82% SIN IVA\\n?|\\*CONDUSEF\\n?COMISION PARA LA PROTECCION Y LA DEFENSA DE USUARIOS DE SERVICIOS FINANCIEROS\\. TEL \\(55\\) 5340 0999 8080 Y 01 800 999 8080 www\\.condusef\\.gob\\.mx\\n?",
-                "");
+        text = text.replaceAll("\\*CAT \\(COSTO ANUAL TOTAL\\) 115\\.82% SIN IVA\\n?|\\*CONDUSEF\\n?COMISION PARA LA PROTECCION Y LA DEFENSA DE USUARIOS DE SERVICIOS FINANCIEROS\\. TEL \\(55\\) 5340 0999 8080 Y 01 800 999 8080 www\\.condusef\\.gob\\.mx\\n?","");
 
         do {
 
