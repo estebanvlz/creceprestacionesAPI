@@ -11,7 +11,8 @@ public class PrestamoModel {
     private double tasaInteres;
     private String fechaApertura;
     private String fechaVencimiento;
-    private boolean terminado;
     private SaldoModel saldo;
+    private String numeroPagoActual;
+    private boolean terminado;
     private MovimientosModel[] movimientos;
 }
