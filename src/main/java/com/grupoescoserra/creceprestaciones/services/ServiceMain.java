@@ -26,6 +26,7 @@ import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.springframework.stereotype.Service;
+import org.apache.commons.lang3.ArrayUtils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -72,11 +73,11 @@ public class ServiceMain{
         }
     }
 
-    public HashMap<Integer, PrestamosModel> fetchAllLoanInfoByMovementMonthAndYear(String month, String year){
-        HashMap<Integer, PrestamosModel> map = new HashMap<>(); 
+
+    public List<PrestamosModel> fetchAllLoanInfoByMovementMonthAndYear(String month, String year){
         List<PrestamosModel> prestamos = fetchAllLoansInfo();
         prestamos.removeAll(Collections.singleton(null));
-        int index = 0;
+        List<PrestamosModel> list = new ArrayList<>();
         for (PrestamosModel prestamosModel : prestamos) {
             PrestamoModel[] filteredPrestamos = Arrays.stream(prestamosModel.getPrestamos())
                 .map(prestamo -> {
@@ -91,15 +92,13 @@ public class ServiceMain{
                 })
                 .filter(prestamo -> prestamo.getMovimientos().length > 0)
                 .toArray(PrestamoModel[]::new);
-            
             if (filteredPrestamos.length > 0) { 
                 prestamosModel.setPrestamos(filteredPrestamos);
-                map.put(index++, prestamosModel);
+                list.add(prestamosModel);
             }
         }
-        return map;  
+        return list;  
     }
-
 
     private List<HashMap<String, String>> fetchAllIdsAndCompanyName() throws IOException{
         try {
@@ -329,11 +328,15 @@ public class ServiceMain{
     
                     }).collect(Collectors.toList());
 
+                
+                
                 prestamo.setNumeroPagoActual((arrMoviemientos.size()/3) + "/" + prestamo.getPlazoPactado());
 
                 if(arrMoviemientos.size()/3 == prestamo.getPlazoPactado()){
                     
                 }
+
+                Collections.reverse(arrMoviemientos);
                 
                 prestamo.setMovimientos(arrMoviemientos.toArray(new MovimientosModel[0]));
 

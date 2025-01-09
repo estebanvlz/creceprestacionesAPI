@@ -27,7 +27,7 @@ public class ControllerMain {
     }
 
     @GetMapping("/movimientos")
-    public HashMap<Integer, PrestamosModel> function2(@RequestParam("month") String month, @RequestParam("year") String year){
+    public List<PrestamosModel> function2(@RequestParam("month") String month, @RequestParam("year") String year){
         return service.fetchAllLoanInfoByMovementMonthAndYear(month, year);
     }
 
